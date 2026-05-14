@@ -142,3 +142,23 @@ footer {
     padding: 24px;
     color: #94a3b8;
 }
+
+.status-badge {
+    display: inline-block;
+    background: #16a34a;
+    color: #f0fdf4;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.api-box {
+    margin-top: 18px;
+    background: #0f172a;
+    border: 1px solid #475569;
+    border-radius: 12px;
+    padding: 18px;
+    color: #e5e7eb;
+    line-height: 1.8;
+}

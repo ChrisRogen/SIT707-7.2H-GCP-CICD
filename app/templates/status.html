@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <div>
+        <h2>Application Health Status</h2>
+        <p>
+            This page provides a user-friendly status view for the deployed Flask application.
+            The raw JSON health endpoint remains available at <strong>/health</strong> for
+            technical verification and Cloud Run service checks.
+        </p>
+    </div>
+</section>
+
+<section class="cards">
+    <div class="card">
+        <h3>Service</h3>
+        <p>{{ health.service }}</p>
+    </div>
+    <div class="card">
+        <h3>Status</h3>
+        <p class="status-badge">{{ health.status }}</p>
+    </div>
+    <div class="card">
+        <h3>Environment</h3>
+        <p>{{ health.environment }}</p>
+    </div>
+    <div class="card">
+        <h3>Testing</h3>
+        <p>{{ health.testing }}</p>
+    </div>
+</section>
+
+<section class="panel">
+    <h2>Deployment Verification</h2>
+    <p>
+        The application was prepared for automated CI/CD using Google Cloud Build,
+        Artifact Registry, and Cloud Run. The health API endpoint is kept separate
+        so it can be used for automated service checks.
+    </p>
+
+    <div class="api-box">
+        <strong>Health API:</strong> /health<br>
+        <strong>Expected JSON:</strong> {"service":"SIT707 Quality Tracker","status":"healthy"}
+    </div>
+</section>
+{% endblock %}

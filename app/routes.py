@@ -1,4 +1,4 @@
-﻿from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for
 from app.services import (
     create_test_record,
     get_all_test_records,
@@ -33,6 +33,17 @@ def dashboard():
     records = get_all_test_records()
     summary = calculate_quality_summary(records)
     return render_template("dashboard.html", records=records, summary=summary, error=error)
+
+@main_bp.route("/status")
+def status_page():
+    health = {
+        "service": "SIT707 Quality Tracker",
+        "status": "healthy",
+        "environment": "Cloud Run ready",
+        "testing": "pytest automated suite",
+        "deployment": "Google Cloud Build and Cloud Run",
+    }
+    return render_template("status.html", health=health)
 
 @main_bp.route("/health")
 def health():

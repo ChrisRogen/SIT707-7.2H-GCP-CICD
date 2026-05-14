@@ -1,4 +1,4 @@
-﻿import pytest
+import pytest
 from app import create_app
 
 @pytest.fixture()
@@ -19,6 +19,12 @@ def test_dashboard_route_loads_successfully(client):
     response = client.get("/dashboard")
     assert response.status_code == 200
     assert b"Quality Dashboard" in response.data
+
+def test_health_status_page_loads_successfully(client):
+    response = client.get("/status")
+    assert response.status_code == 200
+    assert b"Application Health Status" in response.data
+    assert b"Cloud Run ready" in response.data
 
 def test_health_route_returns_healthy_json(client):
     response = client.get("/health")
