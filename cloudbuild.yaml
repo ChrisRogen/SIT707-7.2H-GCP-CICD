@@ -11,13 +11,13 @@ steps:
     args:
       - 'build'
       - '-t'
-      - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/sit707-quality-tracker:$SHORT_SHA'
+      - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/sit707-quality-tracker:$BUILD_ID'
       - '.'
 
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-      - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/sit707-quality-tracker:$SHORT_SHA'
+      - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/sit707-quality-tracker:$BUILD_ID'
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
@@ -26,7 +26,7 @@ steps:
       - 'deploy'
       - 'sit707-quality-tracker'
       - '--image'
-      - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/sit707-quality-tracker:$SHORT_SHA'
+      - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/sit707-quality-tracker:$BUILD_ID'
       - '--region'
       - '${_REGION}'
       - '--platform'
@@ -38,7 +38,7 @@ substitutions:
   _REPOSITORY: 'sit707-cicd-repo'
 
 images:
-  - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/sit707-quality-tracker:$SHORT_SHA'
+  - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/sit707-quality-tracker:$BUILD_ID'
 
 options:
   logging: CLOUD_LOGGING_ONLY
