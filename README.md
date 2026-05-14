@@ -46,3 +46,5 @@ The cloudbuild.yaml file defines the following pipeline stages:
 - Image registry: Artifact Registry
 - CI/CD service: Google Cloud Build
 - Source repository: GitHub
+
+Trigger verification: GitHub push should start the Cloud Build CI/CD pipeline.
