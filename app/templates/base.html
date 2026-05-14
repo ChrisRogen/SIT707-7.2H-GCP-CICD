@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SIT707 Quality Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <div>
+            <h1>SIT707 Quality Tracker</h1>
+            <p>Cloud-ready CI/CD testing dashboard for software quality monitoring.</p>
+        </div>
+        <nav>
+            <a href="{{ url_for('main.index') }}">Home</a>
+            <a href="{{ url_for('main.dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('main.health') }}">Health API</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>SIT707 7.2H - Continuous Integration and Deployment with GCP</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,34 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <div>
+        <h2>Software quality visibility for CI/CD pipelines</h2>
+        <p>
+            This application records test outcomes and displays a quality summary.
+            It is designed as a scalable Flask application that can later be extended
+            with authentication, database storage, reporting, and cloud monitoring.
+        </p>
+        <a class="button" href="{{ url_for('main.dashboard') }}">Open Dashboard</a>
+    </div>
+</section>
+
+<section class="cards">
+    <div class="card">
+        <h3>Total Tests</h3>
+        <p class="metric">{{ summary.total }}</p>
+    </div>
+    <div class="card">
+        <h3>Passed</h3>
+        <p class="metric">{{ summary.passed }}</p>
+    </div>
+    <div class="card">
+        <h3>Failed</h3>
+        <p class="metric">{{ summary.failed }}</p>
+    </div>
+    <div class="card">
+        <h3>Pass Rate</h3>
+        <p class="metric">{{ summary.pass_rate }}%</p>
+    </div>
+</section>
+{% endblock %}

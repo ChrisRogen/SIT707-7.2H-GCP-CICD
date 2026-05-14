@@ -1,0 +1,67 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+<section class="panel">
+    <h2>Quality Dashboard</h2>
+    <p>Add test evidence records and monitor the current quality status of the application.</p>
+
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST" class="form-grid">
+        <input type="text" name="test_name" placeholder="Test name">
+        <input type="text" name="module_name" placeholder="Module name">
+        <select name="status">
+            <option value="">Select status</option>
+            <option value="Pass">Pass</option>
+            <option value="Fail">Fail</option>
+            <option value="Blocked">Blocked</option>
+        </select>
+        <button type="submit">Add Test Record</button>
+    </form>
+</section>
+
+<section class="cards">
+    <div class="card">
+        <h3>Total</h3>
+        <p class="metric">{{ summary.total }}</p>
+    </div>
+    <div class="card">
+        <h3>Pass</h3>
+        <p class="metric">{{ summary.passed }}</p>
+    </div>
+    <div class="card">
+        <h3>Fail</h3>
+        <p class="metric">{{ summary.failed }}</p>
+    </div>
+    <div class="card">
+        <h3>Blocked</h3>
+        <p class="metric">{{ summary.blocked }}</p>
+    </div>
+</section>
+
+<section class="panel">
+    <h2>Test Records</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Test Name</th>
+                <th>Module</th>
+                <th>Status</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in records %}
+            <tr>
+                <td>{{ record.test_name }}</td>
+                <td>{{ record.module_name }}</td>
+                <td>{{ record.status }}</td>
+                <td>{{ record.created_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}
